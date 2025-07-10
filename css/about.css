@@ -1,0 +1,93 @@
+:root {
+  --main-bg-color: whitesmoke;
+  --general-text-color: green;
+  --main-text-color: rgba(26, 24, 24, 0.767);
+  --sec-text-color: rgb(184, 184, 184);
+}
+
+.body {
+  color: #6E7A84;
+}
+
+/* body first section */
+#about_us {
+  padding: 150px 20px;
+}
+
+#about_us .wrapper_contents {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wrapper_contents #write_up {
+  width: 40%;
+}
+
+#about_us .wrapper_contents h3 {
+  color: green;
+  text-transform: capitalize;
+  font-size: calc(50px - 10px);
+  font-weight: 700;
+}
+
+.wrapper_contents #side_image img {
+  width: 100%;
+  height: 50vh;
+  border-radius: 5px;
+}
+
+#about_us .wrapper_contents h3 {
+  color: green;
+  text-transform: capitalize;
+  font-size: calc(50px - 10px);
+  font-weight: 700;
+}
+
+.flex_wrapper .counter_box .count {
+  font-size: 30px;
+  color: green;
+}
+
+.flex_wrapper img {
+  width: 100%;
+  height: 50vh;
+  border-radius: 5px;
+}
+
+/* article */
+#motivation p:not(:last-child) {
+  font-size: 30px;
+}
+
+#motivation .author_ceo {
+  margin-top: 100px;
+}
+
+#motivation .author_ceo h5 {
+  color: green;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+/* media queries */
+@media screen and (max-width: 991px) {
+  .wrapper_contents #write_up {
+    width: 100%;
+  }
+
+  #about_us .wrapper_contents h3 {
+    font-weight: 600;
+    font-size: calc(35px - 10px);
+  }
+}
+
+@media (width: 280px) {
+  #about_us .wrapper_contents h3 {
+    font-weight: 500;
+  }
+
+  /* article */
+  #motivation p:not(:last-child) {
+    font-size: 20px;
+  }
+}

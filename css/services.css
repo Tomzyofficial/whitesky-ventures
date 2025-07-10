@@ -1,0 +1,100 @@
+:root{
+    --main-text-color: #6E7A84;
+}
+/* body first section */
+.boost{
+    padding-top: 100px;
+}
+.boost h3{
+    font-size: 55px;
+    font-weight: 700;
+    padding: 50px 250px;
+    text-transform: capitalize;
+    color: green;   
+}
+/* body sec section */
+.counter-box{
+    margin: 40px 50px;
+}
+.counter-icon{
+    border: 1px solid lightgreen;
+    height: 50px;
+    width: 50px;
+    transform: rotate(45deg);
+    
+}
+.counter-icon i{
+    font-size: 30px;
+    color: #f39c12;
+    transform: rotate(-45deg);
+    margin: 8px 8px;
+}
+.counter-box p{
+    font-size: 30px;
+    color: green;
+}
+.counter-box .entail{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--main-text-color);
+}
+/* body first article */
+.our_mission{
+    padding: 100px 250px;
+    color: var(--main-text-color);
+    font-weight: 500;
+}
+.our_mission h3{
+    font-size: 55px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: green;  
+}
+.advance, .seamless, .revenue{
+    background-color: #fefefe;
+    padding: 50px 50px;
+    color: var(--main-text-color);
+}
+.advance img, .seamless img, .revenue img{
+    width: 50px;
+    height: 50px;          
+}
+.advance h4, .seamless h4, .revenue h4{
+    color: green;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+/* body third article */
+.usage{
+    margin-top: 100px;
+    padding: 50px 50px;
+    width: 60%;
+    border-radius: 20px;
+    background-image: conic-gradient( green 45%,  lightgreen 20%);
+    color: #fff;
+}
+.usage h3{
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 40px;
+}
+.usage p{
+    padding: 10px 100px;
+    font-weight: 300;
+}
+/* media queries */
+@media screen and (max-width: 991px) {
+    /* body first section */
+    .boost h3{padding: 20px; font-weight: 600; font-size: 25px;}
+    /* body first article */
+    .our_mission{padding: 20px;}
+    .our_mission h3{font-weight: 600; font-size: 30px;}
+    /* body third article */
+    .usage{padding: 30px;}
+    .usage h3{font-weight: 600; font-size: 25px;}
+    .usage p{padding: 20px;}
+}
+@media (width: 280px) {
+    .boost h3{font-size: 20px;}
+    .our_mission h3{font-size: 20px;}
+}

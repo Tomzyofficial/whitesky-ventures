@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-text-color: #fefefe;
+  --main-bg-color: #060818;
+  --bg-color: #0e1726;
+  --side-bar-bg: #181A20;
+}
+
+.bg {
+  background-color: var(--main-bg-color);
+  overflow-x: hidden;
+}
+
+/* nav icon */
+.menu-btn-burger {
+  position: relative;
+  top: 25px;
+  left: 20px;
+  z-index: 1;
+  display: none;
+}
+
+.menu-icon {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  background-color: #fefefe;
+  transition: all .5s ease-in-out;
+  box-shadow: 2px 3px 5px grey;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 5px;
+  background-color: #fefefe;
+  transition: all .5s ease-in-out;
+  box-shadow: 2px 3px 5px lightblue;
+}
+
+.menu-icon::before {
+  transform: translateY(-8px);
+}
+
+.menu-icon::after {
+  transform: translateY(8px);
+}
+
+.menu-btn-burger.open .menu-icon {
+  box-shadow: none;
+  transform: translateX(-50px);
+  background-color: transparent;
+}
+
+.menu-btn-burger.open .menu-icon::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-btn-burger.open .menu-icon::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+.nav-links {
+  list-style: none;
+  padding-top: 50px;
+  padding-left: 10px;
+  position: relative;
+  font-size: 15px;
+}
+
+.nav-links li {
+  line-height: 50px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--main-text-color);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.nav-links li a:hover {
+  color: #009688;
+  transition: all .6s ease;
+}
+
+.main_wrapper .left_side {
+  position: relative;
+  float: left;
+  background-color: var(--side-bar-bg);
+  color: var(--main-text-color);
+  height: calc(140vh - 20px);
+  width: 15%;
+  border-right-style: solid;
+  border-right-color: var(--main-text-color);
+}
+
+/* logout button */
+#logout {
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+}
+
+/* right side contents */
+.statistics {
+  background-color: var(--bg-color);
+  padding: 10px 20px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.statistics h6 {
+  color: var(--main-text-color);
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
+.statistics p {
+  color: var(--main-text-color);
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.statistics p #active_deposit {
+  font-weight: 500;
+  color: darkred;
+  font-size: 25px;
+}
+
+.statistics p #active_bal {
+  font-weight: 500;
+  color: darkseagreen;
+  font-size: 25px;
+}
+
+.statistics p:not(:last-child) {
+  float: right;
+}
+
+/* deposit buttons side */
+.deposit_buttons {
+  background-image: linear-gradient(to left, #6b7764 0%, #2f384f 100%);
+  padding: 10px 20px;
+  padding-bottom: 20px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.deposit_buttons h6 {
+  color: var(--main-text-color);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.deposit_buttons h6:nth-child(odd) {
+  float: right;
+}
+
+.deposit_buttons p {
+  display: inline-flex;
+}
+
+.deposit_buttons p i {
+  color: var(--main-text-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 10px;
+}
+
+.deposit_buttons #deposit {
+  border: 1px solid var(--main-text-color);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 10px 10px;
+  text-align: center;
+  color: var(--main-text-color);
+}
+
+/* total earned */
+.total_earned {
+  background-color: var(--bg-color);
+  width: 95%;
+  border-radius: 10px;
+  height: 100%;
+  padding: 20px 20px;
+}
+
+.total_earned h6 {
+  color: var(--main-text-color);
+  font-weight: 500;
+}
+
+/* .total_earned i {
+  position: relative;
+  color: var(--main-text-color);
+  background-color: #5c1ac3;
+  padding: 10px;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  float: right;
+} */
+
+/* crypto statistics pluggin */
+.crypto_widget {
+  background-color: var(--bg-color);
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.crypto_widget h5 {
+  color: var(--main-text-color);
+  text-transform: capitalize;
+  border-bottom: 1px dashed #fff;
+  padding-bottom: 15px;
+}
+
+/* user account logged in */
+.profile_side {
+  background-color: var(--bg-color);
+  padding: 10px 10px;
+  border-radius: 10px;
+  width: 95%;
+}
+
+.profile_side img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+}
+
+.profile_side #user_name {
+  color: #ccc;
+  font-size: 15px;
+}
+
+.profile_side hr {
+  color: #ccc;
+
+}
+
+.profile_side .bots h5 {
+  text-transform: capitalize;
+  font-size: 14px;
+  color: #009688;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.profile_side .img_group img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 991px) {
+
+  /* left side navbar */
+  .main_wrapper .left_side {
+    border-right-color: transparent !important;
+  }
+
+  .main_wrapper .left_side {
+    width: 0;
+    height: 0
+  }
+
+  /* nav icon */
+  .menu-btn-burger {
+    display: block;
+    margin: 20px 5px;
+  }
+
+  .nav-links {
+    display: inline-block;
+    position: fixed;
+    margin-top: 20px;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8));
+    transition: all .5s ease-in-out;
+    width: 100%;
+    height: 100vh;
+    left: -100%;
+    z-index: 1;
+  }
+
+  .nav-links.show {
+    left: 0;
+  }
+
+  .nav-links li {
+    line-height: 70px;
+  }
+
+  .nav-links li a {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  /* right side */
+  .right_side {
+    transform: translateY(100px);
+  }
+}

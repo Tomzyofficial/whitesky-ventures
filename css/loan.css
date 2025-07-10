@@ -1,0 +1,61 @@
+:root {
+  --main-text-color: #fefefe;
+  --main-bg-color: #060818;
+  --bg-color: #0e1726;
+  --side-bar-bg: #181A20;
+}
+
+.bg {
+  background-color: white;
+}
+
+.right_side {
+  display: flex;
+  justify-content: center;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+  transition: ease-in-out;
+  border-radius: 3px;
+  border: 1px solid gray;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: 1px solid lightgreen;
+}
+
+#process {
+  background-color: green;
+  transition: ease-in-out;
+  border-radius: 2px;
+}
+
+#process:hover {
+  background-color: rgb(66, 112, 66);
+}
+
+#process:disabled {
+  background-color: #ddd;
+  color: #aaa;
+}
+
+/* media query */
+@media screen and (max-width: 991px) {
+  .bg {
+    background-color: var(--main-bg-color);
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  label {
+    color: whitesmoke;
+  }
+}

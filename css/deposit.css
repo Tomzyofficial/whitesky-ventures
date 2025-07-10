@@ -1,0 +1,106 @@
+:root {
+  --main-text-color: #fefefe;
+  --main-bg-color: #060818;
+  --bg-color: #0e1726;
+  --side-bar-bg: #181A20;
+}
+
+.bg {
+  background-color: var(--main-bg-color);
+  overflow-x: hidden;
+}
+
+/* start hero section */
+.history_back button {
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  padding: 10px 0;
+  color: var(--main-text-color);
+}
+
+#col {
+  padding-top: 100px;
+  color: #ccc;
+}
+
+#hand-pointer {
+  background: #ddd;
+  padding: 25px;
+  font-size: 30px;
+  position: relative;
+  border-radius: 50%;
+}
+
+strong {
+  position: absolute;
+  font-size: 12px;
+  background: #e67e22;
+  color: #535c68;
+  padding: 2px;
+  border: 3px solid #fff;
+  border-radius: 7px;
+  width: 40px;
+  top: 10;
+}
+
+h6 {
+  font-size: 14px;
+  font-style: italic;
+  text-transform: capitalize;
+  padding-top: 20px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.btn-btc,
+.btn-eth,
+.btn-usdt {
+  background-color: white;
+  border: 1px solid #000;
+  color: #000;
+  padding: 5px;
+}
+
+.btn-btc:hover,
+.btn-eth:hover,
+.btn-usdt:hover {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #e67e22;
+}
+
+/* article */
+article h5 {
+  background-color: var(--bg-color);
+  width: 100%;
+  padding: 20px 20px;
+  border-start-end-radius: 10px;
+  border-top-left-radius: 10px;
+  color: #ccc;
+}
+
+.selections {
+  background-color: var(--bg-color);
+  width: 100%;
+  padding: 20px 20px;
+  color: #ccc;
+  border-end-start-radius: 10px;
+  border-end-end-radius: 10px;
+}
+
+select,
+input,
+#process {
+  border: 1px solid #1b2e4b;
+  color: #009688;
+  font-size: 15px;
+  padding: 8px 10px;
+  letter-spacing: 1px;
+  height: calc(1.4em + 1.4rem + 2px);
+  width: 100%;
+  border-radius: 6px;
+  background-color: #1b2e4b;
+}
