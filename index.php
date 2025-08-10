@@ -1,6 +1,6 @@
-<?php 
-  include_once "components/component.inc.php";
-  require_once('app-dashboard/user/connection.inc.php');
+<?php
+include_once "components/component.inc.php";
+require_once('app-dashboard/user/connection.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -19,26 +19,20 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- page icon -->
-  <link rel="icon" type="image/x-icon" href="image/logo.png">
+  <link rel="icon" type="image/x-icon" href="images/logo.PNG">
   <link rel="stylesheet" href="css/style.css">
   <!-- bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- font awesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
-  <!-- <script src="https://use.fontawesome.com/104bd42fc3.js"></script> -->
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <title>Whiteskyventures | Home</title>     
 </head>
 <body class="body">
   <!-- nav -->
   <nav>
     <div class="nav-brand">
-      <a href="index.php"><img src="image/logo.png" alt="website-logo"></a>
+      <a href="index.php"><img src="images/logo.PNG" alt="website-logo"></a>
     </div>
     <ul class="nav-links">
       <li><a href="index.php" class="active-link">Home</a></li>
@@ -47,15 +41,15 @@
       <li><a href="faq.php">FAQs</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <!-- logout button -->
-      <div>
+      <li>
         <?php
           if (isset($_SESSION['u_id'])) {
-            echo '<form action="app-dashboard/user/logout.inc.php" method="POST">
+              echo '<form action="app-dashboard/user/logout.inc.php" method="POST">
             <button type="submit" name="logout" id="logout_button"><span><i class="fa fa-right-from-bracket fa-sm"></i></span>Logout</button>
             </form>';
-          } 
-        ?>
-      </div>
+          }
+?>
+      </li>
     </ul>
     <div class="menu-btn-burger">
       <div class="menu-icon"></div>
@@ -73,7 +67,7 @@
       <!-- pop up message display -->
       <div class="spop-container spop--bottom-right" id="spop--bottom-center"></div>
       <div class="email_box">
-        <a href="mailto:support@whiteskyventures.com" id="email_image"><img src="image/29.png"><span>Message us</span></a>
+        <a href="mailto:support@whiteskyventures.com" id="email_image"><img src="images/29.PNG" alt="Send message"><span>Message us</span></a>
       </div>
       <div class="guide text-center">
         <div class="guidelines">
@@ -110,10 +104,10 @@
   <div class="end_wrapper" id="second_section">
     <div class="container">
       <div class="row">
-        <div class="col-md-7">
-          <div class="image"><img src="image/12.png"></div>
+        <div class="col-md-7 py-5">
+          <div class="image"><img src="images/12.PNG" alt="Fine image on the left"></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 py-5">
           <div class="feature_contents">
             <h3>our best features</h3>
             <hr>
@@ -127,7 +121,7 @@
             </div>
             <div class="security">
               <h5>security</h5>
-              <p>In addition to decentralization, cryptography adds additional layers of protection to the system, making all information on the Blockchain encrypted and more secure</p>
+              <p>In addition to decentralization, cryptography adds additional layers of protection to the system, making all information on the Blockchain encrypted and more secure.</p>
             </div>
           </div>
         </div>  
@@ -142,21 +136,21 @@
       <div class="row" id="first_row">
         <div class="col-lg-4">
           <div class="first_column">
-            <img src="image/15.png">
+            <img src="images/15.PNG" alt="Legal company">
             <h5>legal company</h5>
             <p>Our company conducts absolutely legal activities in the legal field. We are certified to operate investment business, we are legal and safe.</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="first_column">
-            <img src="image/14.png">
+            <img src="images/14.PNG" alt="High reliability">
             <h5>high reliability</h5>
             <p>We are trusted by a huge number of people. We are working hard constantly to improve the level of our security system and minimize possible risks.</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="first_column">
-            <img src="image/16.png">
+            <img src="images/16.PNG" alt="Anonymity">
             <h5>anonymity</h5>
             <p>Anonymity and using cryptocurrency as a payment instrument. In the era of electronic money - this is one of the most convenient ways of cooperation.</p>
           </div>
@@ -166,21 +160,21 @@
     <div class="row" id="second_row">
       <div class="col-lg-4">
         <div class="second_column">
-          <img src="image/20.png">
+          <img src="images/20.PNG" alt="Transparency">
           <h5>transparency</h5>
           <p>Greatest transaparency helps you keep check of all your investments.</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="second_column">
-          <img src="image/17.png">
+          <img src="images/17.PNG" alt="Quick withdrawal">
           <h5>quick withdrawal</h5>
           <p>Our retreats are treated spontaneously once requested. There is a fair maximum limits. The minimum withdrawal amount is as per package plan .</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="second_column">
-          <img src="image/19.png">
+          <img src="images/19.PNG" alt="24/7 support">
           <h5>24/7 support</h5>
           <p>We provide 24/7 customer support through e-mail and telegram. Our support representatives are periodically available to elucidate any difficulty.</p>
         </div>
@@ -198,8 +192,8 @@
         <div class="col-md-3">
           <div class="regular">
             <h5>Regular trade</h5>
-            <img src="image/21.png" style="width: 50px; height: 50px; border-radius: 50%;">
-            <h5>20% in 5 Days</h5>
+            <img src="images/21.PNG" style="width: 50px; height: 50px; border-radius: 50%;" alt="20% ROI">
+            <h5>10% in 2 Days</h5>
             <p>Minimum: $2000.00</p>
             <p>Maximum: $50,000.00</p>
             <a href="app-dashboard/user/login.php" class="btn btn-success btn-sm">Invest Now</a>
@@ -208,8 +202,8 @@
         <div class="col-md-3">
           <div class="regular">
             <h5>Gold trade</h5>
-            <img src="image/21.png" style="width: 50px; height: 50px; border-radius: 50%;">
-            <h5>45% in 2 Weeks</h5>
+            <img src="images/21.PNG" style="width: 50px; height: 50px; border-radius: 50%;" alt="45% ROI">
+            <h5>15% in 3 Days</h5>
             <p>Minimum: $5,000.00</p>
             <p>Maximum: $150,000.00</p>
             <a href="app-dashboard/user/login.php" class="btn btn-success btn-sm">Invest Now</a>
@@ -218,23 +212,13 @@
         <div class="col-md-3">
           <div class="regular">
             <h5>Premium trade</h5>
-            <img src="image/21.png" style="width: 50px; height: 50px; border-radius: 50%;">
-            <h5>65% in 3 Weeks</h5>
+            <img src="images/21.PNG" style="width: 50px; height: 50px; border-radius: 50%;" alt="65% ROI">
+            <h5>25% in 4 Days</h5>
             <p>Minimum: $10,000.00</p>
             <p>Maximum: $200,000.00</p>
             <a href="app-dashboard/user/login.php" class="btn btn-success btn-sm">Invest Now</a>
           </div>
         </div>
-        <!-- <div class="col-md-3">
-          <div class="regular">
-            <h5>Master trade</h5>
-            <img src="image/21.png" style="width: 50px; height: 50px; border-radius: 50%;">
-            <h5>90% in 6 Weeks</h5>
-            <p>Minimum: $50,000.00</p>
-            <p>Maximum: $1,000,000.00</p>
-            <a href="app-dashboard/user/login.php" class="btn btn-success btn-sm">Invest Now</a>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -306,13 +290,12 @@
         </div>
       </div>
     </div>
-    <!-- back to top -->
-    <!-- <div class="back-to-top">
-      <button onclick="topFunction()" id="mybtn"><i class="fa fa-chevron-up"></i></button>
-    </div> -->
+
   </footer>
   <!-- site scripts -->
   <script src="page.js"></script>
   <script src="popUp.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 </body>
 </html>

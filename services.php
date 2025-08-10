@@ -1,38 +1,32 @@
-<?php 
-  require_once('app-dashboard/user/connection.inc.php');
+<?php
+require_once('app-dashboard/user/connection.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-Language" content="en" />
   <meta name="Author" content="bitcoin, ethereum, usdt" />
   <meta name="description" content="investments, investment sites, investment companies" />
   <meta name="keywords" content="best sites to invest, bitcoin investment sites, bitcoin investment companies" />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="index, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="image/logo.png">
+  <link rel="icon" type="image/x-icon" href="images/logo.PNG">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/services.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
    <!-- font awesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
-  <!-- <script src="https://use.fontawesome.com/104bd42fc3.js"></script> -->
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <title>Whiteskyventures | Services</title>  
 </head>
 <body class="body">
   <!-- nav -->
   <nav>
     <div class="nav-brand">
-      <a href="index.php"><img src="image/logo.png" alt="website-logo"></a>
+      <a href="index.php"><img src="images/logo.PNG" alt="website-logo"></a>
     </div>
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
@@ -41,15 +35,15 @@
       <li><a href="faq.php">FAQs</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <!-- logout button -->
-      <div>
+      <li>
         <?php
           if (isset($_SESSION['u_id'])) {
-            echo '<form action="app-dashboard/user/logout.inc.php" method="POST">
+              echo '<form action="app-dashboard/user/logout.inc.php" method="POST">
             <button type="submit" name="logout" id="logout_button"><span><i class="fa fa-right-from-bracket fa-sm"></i></span>Logout</button>
             </form>';
           }
-        ?>
-      </div>
+?>
+      </li>
     </ul>
     <div class="menu-btn-burger">
       <div class="menu-icon"></div>
@@ -113,17 +107,17 @@
   <div class="container">
     <div class="row" id="box">
       <div class="col-sm-4 advance">
-        <img src="image/24.png">
+        <img src="images/24.PNG" alt="Advance platform">
         <h4>advanced platforms</h4>
         <p>Whiteskyventures will continue to offer specialised cryptocurrency financial services</p>
       </div>
       <div class="col-sm-4 seamless">
-        <img src="image/25.png">
+        <img src="images/25.PNG" alt="Seamless integration">
         <h4>seamless integration</h4>
         <p>Whiteskyventures will continue to offer specialised seamless integration</p>
       </div>
       <div class="col-sm-4 revenue">
-        <img src="image/26.png">
+        <img src="images/26.PNG" alt="Revenue multiplier">
         <h4>revenue multiplier</h4>
         <p>Whiteskyventures will continue to offer specialised revenue multiplier</p>
       </div>
@@ -176,16 +170,10 @@
         </div>
       </div>
     </div>
-    <!-- back to top -->
-    <!-- <div class="back-to-top">
-      <button onclick="topFunction()" id="mybtn"><i class="fa fa-chevron-up"></i></button>
-    </div> -->
   </footer>
   <!-- site function js -->
   <script src="page.js"></script>
-  <!-- counter plugin -->
-  <script src="jquery.counterup.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-  <script src="counter.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

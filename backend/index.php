@@ -1,5 +1,5 @@
 <?php
-  require_once('session.inc.php');
+require_once('session.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -46,8 +46,8 @@
         <div class="mx-5 my-4">
           <?php
             echo errorMessage();
-            echo successMessage();
-          ?>
+echo successMessage();
+?>
         </div>
         <div class="mx-5 space-y-4">
           <!-- username input field -->

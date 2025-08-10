@@ -1,13 +1,13 @@
 <?php
-  require_once('session.inc.php');
-  if (!isset($_SESSION['admin_user'])) {
+require_once('session.inc.php');
+if (!isset($_SESSION['admin_user'])) {
     $_SESSION['succMessage'] = 'Login to continue';
     header('Location: index.php');
     exit();
-  } 
-  if (isset($_GET['id'])) {
+}
+if (isset($_GET['id'])) {
     $searchParam = $_GET['id'];
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,12 +20,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="dist/output.css">
   <!-- fontawesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <!-- site logo -->
-  <link rel="icon" type="image/x-icon" href="src/image/logo.jpg">
+  <link rel="icon" type="image/x-icon" href="src/images/logo.PNG">
   <script src="jquery-3.6.0.js"></script>
   <title> Whiteskyventures Admin</title>
 </head>
@@ -39,20 +36,20 @@
       <!-- fetch credit transactions for edit -->
       <?php
         $sql = "SELECT * FROM plan_in_take WHERE id = '$searchParam'";
-          $query = $conn->query($sql);
-          while ($row = $query->fetch_assoc()) {
-            $id = $row['id'];
-            $plan = $row['plan_name'];
-            $crypto = $row['plan_payment_method'];
-            $amount = $row['plan_amount'];
-            $interest = $row['interest_earn'];
-            $slip = $row['plan_image'];
-            $status = $row['status'];
-            $date = $row['date_time'];
-            $paid_id = $row['paid_id'];
-            
-        }
-      ?>
+$query = $conn->query($sql);
+while ($row = $query->fetch_assoc()) {
+    $id = $row['id'];
+    $plan = $row['plan_name'];
+    $crypto = $row['plan_payment_method'];
+    $amount = $row['plan_amount'];
+    $interest = $row['interest_earn'];
+    $slip = $row['plan_image'];
+    $status = $row['plan_status'];
+    $date = $row['date_time'];
+    $paid_id = $row['paid_id'];
+
+}
+?>
       <!-- input field -->
       <form action="edit-transaction.inc.php?id=<?= $searchParam;?>" method="POST">
         <div class="mx-5 space-y-4 grid grid-cols-1 md:grid-cols-2 md:space-y-0">

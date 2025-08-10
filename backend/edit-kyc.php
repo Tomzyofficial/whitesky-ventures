@@ -1,13 +1,13 @@
 <?php
-  require_once('session.inc.php');
-  if (!isset($_SESSION['admin_user'])) {
+require_once('session.inc.php');
+if (!isset($_SESSION['admin_user'])) {
     $_SESSION['succMessage'] = 'Login to continue';
     header('Location: index.php');
     exit();
-  } 
-  if (isset($_GET['id'])) {
+}
+if (isset($_GET['id'])) {
     $searchParam = $_GET['id'];
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +19,10 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="dist/output.css">
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
+ <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <!-- site logo -->
-  <link rel="icon" type="image/x-icon" href="src/image/logo.jpg">
+  <link rel="icon" type="image/x-icon" href="src/images/logo.PNG">
   <script src="jquery-3.6.0.js"></script>
   <title> Whiteskyventures Admin</title>
 </head>
@@ -39,20 +36,20 @@
       <!-- fetch user kyc for edit -->
       <?php
         $sql = "SELECT * FROM kyc_data WHERE id = '$searchParam'";
-        $query = $conn->query($sql);
-        while ($row = $query->fetch_assoc()) {
-          $id = $row['id'];
-          $firstName = $row['first_name'];
-          $lastName = $row['last_name'];
-          $motherName = $row['mother_name'];
-          $email = $row['email'];
-          $bankStatement = $row['bank_statement'];
-          $proof_of_identity = $row['proof_identity'];
-          $status = $row['kyc_status'];
-          $dateTime = $row['date_time'];
-          $kyc_id = $row['kyc_id'];
-        }
-      ?>
+$query = $conn->query($sql);
+while ($row = $query->fetch_assoc()) {
+    $id = $row['id'];
+    $firstName = $row['first_name'];
+    $lastName = $row['last_name'];
+    $motherName = $row['mother_name'];
+    $email = $row['email'];
+    $bankStatement = $row['bank_statement'];
+    $proof_of_identity = $row['proof_identity'];
+    $status = $row['kyc_status'];
+    $dateTime = $row['date_time'];
+    $kyc_id = $row['kyc_id'];
+}
+?>
       <!-- input field -->
       <form action="edit-kyc.inc.php?id=<?= $searchParam;?>" method="POST">
         <div class="mx-5 space-y-4 grid grid-cols-1 md:grid-cols-2 md:space-y-0">

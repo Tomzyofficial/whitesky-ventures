@@ -1,7 +1,8 @@
 <?php
-  require_once('session.inc.php');
-  $searchParam = $_GET['id'];
-  if (isset($_POST['submit'])) {
+
+require_once('session.inc.php');
+$searchParam = $_GET['id'];
+if (isset($_POST['submit'])) {
     $firstname = ucwords(mysqli_real_escape_string($conn, $_POST['first_name']));
     $lastname = ucwords(mysqli_real_escape_string($conn, $_POST['last_name']));
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -11,8 +12,7 @@
     $conn->query($sql);
     header('Location: admin-users.php');
     exit();
-  } else {
+} else {
     header('Location: index.php');
     exit();
-  }
-?>
+}

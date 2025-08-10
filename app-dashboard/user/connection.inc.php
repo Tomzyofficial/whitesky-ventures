@@ -1,4 +1,5 @@
 <?php
+
 require_once("session.inc.php");
 $serverName = "localhost";
 $serverUser = "root";
@@ -12,5 +13,3 @@ $dbname = "whiteskyventures_database";
 $conn = mysqli_connect($serverName, $serverUser, $serverPass, $dbname); */
 /* $pdo ="mysql:host=localhost; dbname=whiteskyventures_database";
 $conn = new PDO($pdo, "whiteskyventures_ameliarosario", "chukwuebuka86"); */
-
-

@@ -1,4 +1,5 @@
 <?php
+
 $host = 'localhost';
 $username = 'root';
 $password = '';
@@ -10,4 +11,3 @@ $conn = mysqli_connect($host, $username, $password, $database);
 // $password = 'chukwuebuka86';
 // $database = 'blueseedfinance_database';
 // $conn = mysqli_connect($host, $username, $password, $database);
-

@@ -1,10 +1,10 @@
-<?php 
-  require_once("session.inc.php"); 
-  require_once("connection.inc.php");
-  if (isset($_SESSION['u_id'])) {
+<?php
+require_once("session.inc.php");
+require_once("connection.inc.php");
+if (isset($_SESSION['u_id'])) {
     header('Location: dashboard.php');
     exit();
-  }
+}
 ?>  
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +21,10 @@
     <meta name="keywords" content="best sites to invest, bitcoin investment sites, bitcoin investment companies" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../../image/logo.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.PNG">
     <link rel="stylesheet" href="../../css/register.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/104bd42fc3.js"></script>
     <title>Whiteskyventures | Register</title>
 </head>
@@ -36,8 +34,8 @@
             <h2>Register Here</h2>
             <div class="message_display text-center">
                 <?php echo errorMessage();
-                    echo successMessage();
-                ?>
+echo successMessage();
+?>
             </div>
             <form action="register.inc.php" method="POST" autocomplete="on">
                 <div class="form-group">
@@ -63,5 +61,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

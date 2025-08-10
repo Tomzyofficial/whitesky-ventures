@@ -1,10 +1,9 @@
 <?php
-  require_once('app-dashboard/user/connection.inc.php');
+require_once('app-dashboard/user/connection.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-Language" content="en" />
@@ -13,27 +12,21 @@
   <meta name="keywords" content="best sites to invest, bitcoin investment sites, bitcoin investment companies" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="image/logo.png">
+  <link rel="icon" type="image/x-icon" href="images/logo.PNG">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/faq.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
   <!-- font awesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
-  <!-- <script src="https://use.fontawesome.com/104bd42fc3.js"></script> -->
-  <!-- <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script> -->
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <title>Whiteskyventures | FAQ</title>  
 </head>
 <body class="body">
   <!-- nav -->
   <nav>
     <div class="nav-brand">
-      <a href="index.php"><img src="image/logo.png" alt="website-logo"></a>
+      <a href="index.php"><img src="images/logo.PNG" alt="website-logo"></a>
     </div>
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
@@ -42,15 +35,15 @@
       <li><a href="faq.php" class="active-link">FAQs</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <!-- logout button -->
-      <div>
+      <li>
         <?php
           if (isset($_SESSION['u_id'])) {
-            echo '<form action="app-dashboard/user/logout.inc.php" method="POST">
+              echo '<form action="app-dashboard/user/logout.inc.php" method="POST">
             <button type="submit" name="logout" id="logout_button"><span><i class="fa fa-right-from-bracket fa-sm"></i></span>Logout</button>
             </form>';
           }
-        ?>
-      </div>
+?>
+      </li>
     </ul>
     <div class="menu-btn-burger">
       <div class="menu-icon"></div>
@@ -61,7 +54,7 @@
     <div class="container">
       <div class="wrapper text-center">
         <div class="image_top mt-5">
-          <img src="image/27.png">
+          <img src="images/27.PNG" alt="Everyone wants to be heard">
         </div>
         <div class="text-center mt-5 faq_writes">
           <p>Everyone wants to be heard and understood. At Whiteskyventures, our core goal is to easily connect with people and understand their preferences.</p>
@@ -75,22 +68,22 @@
     <div class="row" id="supports">
       <div class="col-sm-4">
         <div class="support text-center">
-          <img src="image/30.png">
+          <img src="images/30.PNG" alt="Social">
           <h4 class="py-3"><a href="#">social media</a></h4>
           <p>You can also contact and follow us on our social media platforms.</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="support text-center">
-          <img src="image/29.png" alt="">
+          <img src="images/29.PNG" alt="Contact us">
           <h4 class="py-3"><a href="contact.php">contact us</a></h4>
           <p>Whiteskyventures is here to help with any issue</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="support text-center">
-          <img src="image/28.png">
-          <h4 class="py-3"><a href="mailto:support@whiteskyventures.com">get support</a></h4>
+          <img src="images/28.PNG" alt="Get support">
+          <h4 class="py-3"><a href="#">get support</a></h4>
           <p>Kindly open a support ticket on our help center</p>
         </div>
       </div>
@@ -162,11 +155,8 @@
         </div>
       </div>
     </div>
-    <!-- back to top -->
-    <!-- <div class="back-to-top">
-        <button onclick="topFunction()" id="mybtn"><i class="fa fa-chevron-up"></i></button>
-    </div> -->
   </footer>
   <script src="page.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

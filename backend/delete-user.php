@@ -1,14 +1,14 @@
 <?php
-  require_once('session.inc.php');
-  if (!isset($_SESSION['admin_user'])) {
+require_once('session.inc.php');
+if (!isset($_SESSION['admin_user'])) {
     $_SESSION['succMessage'] = 'Login to continue';
     header('Location: index.php');
     exit();
-  } 
-  // get user id for editing
-  if (isset($_GET['id'])) {
+}
+// get user id for editing
+if (isset($_GET['id'])) {
     $searchParam = $_GET['id'];
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +21,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="dist/output.css">
   <!-- fontawesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <!-- site logo -->
-  <link rel="icon" type="image/x-icon" href="src/image/logo.jpg">
+  <link rel="icon" type="image/x-icon" href="src/images/logo.PNG">
   <script src="jquery-3.6.0.js"></script>
   <title>Whiteskyventures Admin</title>
 </head>
@@ -40,16 +37,16 @@
       <?php
         // fetch user details for delete
         $sql = "SELECT * FROM user_records WHERE id = '$searchParam'";
-        $query = $conn->query($sql);
-        while ($row = $query->fetch_assoc()) {
-          $id = $row['id'];
-          $firstName = $row['user_firstName'];
-          $lastName = $row['user_lastName'];
-          $email = $row['user_email'];
-          $password = $row['user_pwd'];
-          $date = $row['date_time'];
-        }
-      ?>
+$query = $conn->query($sql);
+while ($row = $query->fetch_assoc()) {
+    $id = $row['id'];
+    $firstName = $row['user_firstName'];
+    $lastName = $row['user_lastName'];
+    $email = $row['user_email'];
+    $password = $row['user_pwd'];
+    $date = $row['date_time'];
+}
+?>
       
       <!-- input field -->
       <form action="delete-user.inc.php?id=<?= $searchParam;?>" method="POST">

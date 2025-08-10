@@ -1,14 +1,14 @@
-<?php 
-  include "../../components/component.inc.php"; 
-  require_once "session.inc.php";
-  require_once "connection.inc.php";
-  $loggedIn = $_SESSION['u_id'];
-  // check whether there is a user logged in before opening
-  if (!isset($loggedIn)) {
+<?php
+include "../../components/component.inc.php";
+require_once "session.inc.php";
+require_once "connection.inc.php";
+$loggedIn = $_SESSION['u_id'];
+// check whether there is a user logged in before opening
+if (!isset($loggedIn)) {
     $_SESSION["successMessage"] = "Login to contine";
     header("Location: login.php");
     exit();
-  } 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -22,24 +22,14 @@
   <meta name="keywords" content="best sites to invest, bitcoin investment sites, bitcoin investment companies" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="../../image/logo.png">
+  <link rel="icon" type="image/x-icon" href="../../images/logo.PNG">
   <!-- <link rel="stylesheet" href="../../css/style.css"> --> 
   <link rel="stylesheet" href="../../css/dashboard.css"> 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="https://use.fontawesome.com/104bd42fc3.js"></script> -->
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/regular.css">
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <!-- counter timer -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../css/jquery.countdown.css"> 
-  <script type="text/javascript" src="../../js/jquery.plugin.js"></script> 
-  <script type="text/javascript" src="../../js/jquery.countdown.js"></script>
   <title>Whiteskyventures | User dashboard</title>     
 </head>
 <body class="bg">
@@ -78,38 +68,39 @@
           <div class="col-lg-4 mt-3">
             <div class="statistics">
               <h6>statistics</h6>
-              <p class="pt-3"><small>Active deposit</small><br><span id="active_deposit">
-                <?php 
+              <p class="pt-3"><small>Active deposit</small><br>
+                <span id="active_deposit">
+                <?php
                   // fetch active deposit
                   $sql = "SELECT * FROM plan_in_take WHERE paid_id = '$loggedIn' AND plan_status = 'pending'";
                   $stmt = mysqli_query($conn, $sql);
                   $sum = 0;
-                  while($row = $stmt->FETCH_ASSOC()) {
-                    $sum += $row['plan_amount'];
+                  while ($row = $stmt->FETCH_ASSOC()) {
+                      $sum += $row['plan_amount'];
                   }
-                  if ($sum != NULL) {
-                    echo "$" . htmlentities(number_format($sum, 2));
+                  if ($sum != null) {
+                      echo "$" . htmlentities(number_format($sum, 2));
                   } else {
-                    echo "$" . number_format($sum, 2);
+                      echo "$" . number_format($sum, 2);
                   }
-                ?>
-              </span></p>
+                  ?>
+                </span></p>
               <p class="pt-3"><small>Total balance</small><br>
                 <span id="active_bal">
                   <?php
-                    // fetch available balance
+                  // fetch available balance
                     $sql = "SELECT * FROM plan_in_take WHERE plan_status = 'APPROVED' AND paid_id = '$loggedIn'";
                     $stmt = mysqli_query($conn, $sql);
                     $sum = 0;
                     while ($row = mysqli_fetch_array($stmt)) {
-                      $sum += $row['plan_amount'];
-                    }   
-                    if ($sum != NULL) {
-                      echo "$" . htmlentities(number_format($sum, 2));
-                    } else {
-                      echo "$" . number_format($sum, 2);
+                        $sum += $row['plan_amount'];
                     }
-                  ?>
+                    if ($sum != null) {
+                        echo "$" . htmlentities(number_format($sum, 2));
+                    } else {
+                        echo "$" . number_format($sum, 2);
+                    }
+                    ?>
                 </span>
               </p>
             </div>
@@ -119,30 +110,31 @@
             $sql = "SELECT * FROM user_records WHERE id = '$loggedIn'";
             $stmt = mysqli_query($conn, $sql);
             while ($row = $stmt->FETCH_ASSOC()) {
-              $id = htmlentities($row["id"]);
-              $firstName = htmlentities($row["user_firstName"]);
-              $lastName = htmlentities($row["user_lastName"]);
-              $email = htmlentities($row["user_email"]);
+                $id = htmlentities($row["id"]);
+                $firstName = htmlentities($row["user_firstName"]);
+                $lastName = htmlentities($row["user_lastName"]);
+                $email = htmlentities($row["user_email"]);
             }
-          ?>
+            ?>
           <!-- deposit buttons side -->
           <div class="col-lg-4 mt-3">
             <div class="deposit_buttons">
               <h6 class="total_deposit">
                 <?php
-                  // fetch total deposit
-                  $sql = "SELECT * FROM plan_in_take WHERE paid_id = '$loggedIn'";
-                  $stmt = mysqli_query($conn, $sql);
-                  $sum = 0;
-                  while($row = $stmt->FETCH_ASSOC()) {
-                    $sum += $row['plan_amount'];
-                  }
-                  if ($sum != NULL) {
-                    echo "$" . htmlentities(number_format($sum, 2));
-                  } else {
-                    echo "$" . number_format($sum, 2);
-                  }
-                ?>
+        // fetch total deposit
+        $sql = "SELECT * FROM plan_in_take WHERE paid_id = '$loggedIn'";
+        $result = mysqli_query($conn, $sql);
+        $sum = 0;
+        while ($row = $result->FETCH_ASSOC()) {
+            $sum += $row['plan_amount'];
+        }
+
+        if ($sum != null) {
+            echo "$" . htmlentities(number_format($sum, 2));
+        } else {
+            echo "$" . htmlentities(number_format($sum, 2));
+        }
+        ?>
               </h6>
               <h6>total deposit</h6>
               <p class="pt-3"><i class="fa fa-plus fa-xs"></i></p>
@@ -153,279 +145,89 @@
           <!-- total interest earned -->
           <div class="col-lg-4 mt-3">
             <div class="total_earned">
-              <h6 id="defaultCountdown">
-                <!-- fetch total interest earned -->
-                <P>
-                  <?php
-                    $sql = "SELECT * FROM plan_in_take WHERE plan_status = 'APPROVED' AND paid_id = '$loggedIn'";
-                    $stmt = $conn->query($sql);
-                    $result = $stmt->num_rows;
-                    $plan_name = "";
-                    $deposit_total = 0;
-                    $interestEarned = 0;
-                    $percentage = 100;
-                    $percent = 0;
-                    if ($result > 0) {
-                      while ($row = $stmt->FETCH_ASSOC()) {
-                        $plan_name = $row['plan_name'];
-                        $payment_method = $row['plan_payment_method'];
-                        $deposit_total += $row['plan_amount'];
-                        $interestEarned = $row['interest_earn'];
-                        $deposit_time = $row['date_time'];
-                        $current_time = date('Y-m-d H:i:s'); 
-                        
-                        // calculate the time difference
-                        $dateTime1 = new DateTime($deposit_time);
-                        $dateTime2 = new DateTime($current_time);
-                        $interval = $dateTime1->diff($dateTime2);
-                        $days =  $interval->days;
-                        // echo "days $days <br>";
-                        
-                      }
-                      // check if plan name is = Regular trade and time interval upon deposit has been at least 5 days
-                      if ($plan_name == 'Regular trade') {
-                        if ($days == 5) {
-                          $percent = 20;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2));
-                        } elseif ($days == 10) {
-                          $percent = 20 * 2;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2));
-                        } elseif ($days == 15) {
-                          $percent = 20 * 3;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 20) { // in 20 days user earns 80%
-                          $percent = 20 * 4;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 25) { // in 25 days user earns 100%
-                          $percent = 20 * 5;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 30) { // in 30 days user earns 120%
-                          $percent = 20 * 6;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 35) { // in 35 days user earns 140%
-                          $percent = 20 * 7;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        }  elseif ($days == 40) { // in 40 days user earns 160%
-                          $percent = 20 * 8;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 45) { // in 45 days user earns 180%
-                          $percent = 20 * 9;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 50) { // in 50 days user earns 200%
-                          $percent = 20 * 10;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 55) { // in 55 days user earns 220%
-                          $percent = 20 * 11;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 60) { // in 60 days user earns 240%
-                          $percent = 20 * 12;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 65) { // in 65 days user earns 260%
-                          $percent = 20 * 13;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 70) { // in 70 days user earns 280%
-                          $percent = 20 * 14;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 75) { // in 75 days user earns 300%
-                          $percent = 20 * 15;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 80) { // in 80 days user earns 320%
-                          $percent = 20 * 16;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } else {
-                          // select the first row of the interest earn  
-                          $sql = "SELECT * FROM plan_in_take WHERE plan_status = 'APPROVED' and paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $stmt = $conn->query($sql);
-                          $row = $stmt->FETCH_ASSOC();
-                          echo "$" . $row['interest_earn'] . "<br>";
-                          echo "<code>Interest is calculated and returned every 5 days</code>";
-                        }
-                        // check if plan name is = Gold trade and time interval upon deposit has been at least 14 days
-                      } elseif ($plan_name == 'Gold trade') {
-                        if ($days == 14) {
-                          $percent = 45;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2));
-                        } elseif ($days == 28) {
-                          $percent = 45 * 2;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2));
-                        } elseif ($days == 42) {
-                          $percent = 45 * 3;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 56) { 
-                          $percent = 45 * 4;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 70) { 
-                          $percent = 45 * 5;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 84) { 
-                          $percent = 46 * 6;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 98) {
-                          $percent = 45 * 7;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 112) { 
-                          $percent = 45 * 8;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 126) { 
-                          $percent = 45 * 9;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 140) { 
-                          $percent = 45 * 10;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } else {
-                          // select the first row of the interest earn  
-                          $sql = "SELECT * FROM plan_in_take WHERE plan_status = 'APPROVED' and paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $stmt = $conn->query($sql);
-                          $row = $stmt->FETCH_ASSOC();
-                          echo "$" . $row['interest_earn'] . "<br>";
-                          echo "<code>Interest is calculated and returned every 2 weeks</code>";
-                        }
-                        // check if plan name is = Premium trade and time interval upon deposit has been at least 21 days
-                      } elseif ($plan_name == 'Premium trade') {
-                        if ($days == 21) {
-                          $percent = 65;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2));
-                        } elseif ($days == 42) {
-                          $percent = 65 * 2;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2));
-                        } elseif ($days == 63) {
-                          $percent = 65 * 3;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 84) { 
-                          $percent = 65 * 4;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 105) { 
-                          $percent = 65 * 5;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 126) { 
-                          $percent = 65 * 6;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } elseif ($days == 147) {
-                          $percent = 65 * 7;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        }  elseif ($days == 168) { 
-                          $percent = 65 * 8;
-                          $interestRate = ($percent / $percentage) * $deposit_total;
-                          $sql_interest = "UPDATE plan_in_take SET interest_earn = '$interestRate' WHERE paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $conn->query($sql_interest);
-                          echo "$" . htmlentities(number_format($interestRate, 2)); 
-                        } else {
-                          // select the first row of the interest earn  
-                          $sql = "SELECT * FROM plan_in_take WHERE plan_status = 'APPROVED' and paid_id = '$loggedIn' ORDER BY id ASC LIMIT 1";
-                          $stmt = $conn->query($sql);
-                          $row = $stmt->FETCH_ASSOC();
-                          echo "$" . $row['interest_earn'] . "<br>";
-                          echo "<code>ROI is calculated and returned every 21 days</code>";
-                        }
+              <h5 id="defaultCountdown">
+                <!-- Handle interest earned  -->
+                <?php
+                  $sql = "SELECT * FROM plan_in_take WHERE plan_status = 'APPROVED' AND paid_id = '$loggedIn'";
+                  $result = $conn->query($sql);
+
+                  $plan_name = "";
+                  $deposit_total = 0;
+                  $interestEarned = 0;
+                  $percentage = 100;
+                  $percent = 0;
+
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                      $plan_name = $row['plan_name'];
+                      $payment_method = $row['plan_payment_method'];
+                      $deposit_total += $row['plan_amount'];
+                      $interestEarned = $row['interest_earn'];
+                      $deposit_time = $row['date_time'];
+                      $current_time = date('Y-m-d H:i:s');
+
+                      // calculate the time difference
+                      $dateTime1 = new DateTime($deposit_time);
+                      $dateTime2 = new DateTime($current_time);
+                      $interval = $dateTime1->diff($dateTime2);
+                      $days =  $interval->days;
+
+                    }
+
+                    // Perform math calculation for interest earned per investment plan
+                    $plans = [
+                      'Regular trade' => ['interval' => 2, 'percent_per_interval' => 10, 'max_intervals' => 60],
+                      'Gold trade' => ['interval' => 3, 'percent_per_interval' => 15, 'max_intervals' => 90],
+                      'Premium trade' => ['interval' => 4, 'percent_per_interval' => 25, 'max_intervals' => 120]
+                    ];
+
+                    if (!isset($plans[$plan_name])) {
+                      echo "$0.00";
+                      return;
+                    }
+
+                    $plan = $plans[$plan_name];
+                    $intervals_completed = floor($days / $plan['interval']);
+
+                    if ($intervals_completed >= 1 && $intervals_completed <= $plan['max_intervals']) {
+                      $percent = $plan['percent_per_interval'] * $intervals_completed;
+                      $interestRate = ($percent / $percentage) * $deposit_total;
+
+                      $sql_interest = "UPDATE plan_in_take SET interest_earn = ? WHERE paid_id = ? AND plan_status = 'APPROVED' ORDER BY id ASC LIMIT 1";
+                      $stmt = $conn->prepare($sql_interest);
+                      $stmt->bind_param("di", $interestRate, $loggedIn);
+                      $stmt->execute();
+                    
+                      if ($stmt->affected_rows > 0) {
+                        echo "$" . htmlentities(number_format($interestRate, 2));
                       } else {
-                        echo "$0.00";
+                        echo "$" . htmlentities(number_format($interestRate, 2));
                       }
+
                     } else {
-                      echo '$0.00';
-                    } 
-                  ?> 
-                </P>
-              </h6>
-              <h6 class="text-capitalize">earned total</h6>
+                      // Fetch stored intervals if no days interval yet
+                      $sql = "SELECT interest_earn FROM plan_in_take WHERE plan_status = 'APPROVED' and paid_id = ? ORDER BY id ASC LIMIT 1";
+
+                      $stmt = $conn->prepare($sql);
+                      $stmt->bind_param("i", $loggedIn);
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+
+                      if ($result && $row = $result->fetch_assoc()) {
+                        echo "$" . htmlentities(number_format($row['interest_earn'], 2)) . "<br>";
+                        echo "<code>Interest is calculated and returned every {$plan['interval']} days.</code>";
+                       
+                      } else {
+                        echo "No approved plans found.";
+                      }
+                    }
+
+                  } else {
+                    echo '$0.00';
+                  }
+                ?> 
+              </h5>
+              <h6 class="text-capitalize text-white">earned total</h6>
               <!-- <i class="fa fa-home fa-lg"></i> -->
             </div>
           </div>
@@ -441,7 +243,7 @@
           <!-- user account logged in -->
           <div class="col-md-4 mt-3">
             <div class="profile_side">
-              <img src="../../image/41.png">
+              <img src="../../images/41.PNG">
               <p id="user_name"><?= htmlentities($firstName) . " " . htmlentities($lastName);?><br>
                 <small style="color: #009688;">Investor</small>
               </p>
@@ -449,10 +251,10 @@
                 <hr>
                 <h5>trading bots running</h5>
                 <div class="img_group">
-                  <img src="../../image/33.png">
-                  <img src="../../image/34.jpg">
-                  <img src="../../image/35.jpg">
-                  <img src="../../image/36.jpg">
+                  <img src="../../images/33.PNG" alt="First trader">
+                  <img src="../../images/34.jpg" alt="Second trader">
+                  <img src="../../images/35.jpg" alt="Third trader">
+                  <img src="../../images/36.jpg" alt="Fourth trader">
                 </div>
               </div>
             </div>
@@ -462,5 +264,6 @@
     </div>
   </section>
   <script src="../../page.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

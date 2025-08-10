@@ -2,7 +2,7 @@
 $(document).ready(function () {
   $(".menu-btn-burger").click(function () {
     $(".nav-links").toggleClass("show");
-  })
+  });
 });
 // Menu icon burger
 const menuBtn = document.querySelector(".menu-btn-burger");
@@ -20,9 +20,8 @@ menuBtn.addEventListener("click", function () {
 const scrollAnimation = document.addEventListener("scroll", function () {
   var nav = document.querySelector("nav");
   nav.classList.toggle("sticky", window.scrollY > 300);
-
 });
-//faq 
+//faq
 $(document).ready(function () {
   $(".first").click(function () {
     $(".first-answer").slideToggle("slow");
@@ -63,6 +62,3 @@ $(document).ready(function () {
 
 // footer date update
 $("#year_update").text(new Date().getFullYear());
-
-
-console.log('hello')

@@ -1,11 +1,11 @@
 <?php
-  require_once('session.inc.php');
-  // $adminLoggedIn = $_SESSION['admin_user'];
-  if (!isset($_SESSION['admin_user'])) {
+require_once('session.inc.php');
+// $adminLoggedIn = $_SESSION['admin_user'];
+if (!isset($_SESSION['admin_user'])) {
     $_SESSION['succMessage'] = 'Login to continue';
     header('Location: index.php');
     exit();
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,12 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="dist/output.css">
   <!-- fontawesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <!-- site logo -->
-  <link rel="icon" type="image/x-icon" href="src/image/logo.jpg">
+  <link rel="icon" type="image/x-icon" href="src/images/logo.PNG">
   <script src="jquery-3.6.0.js"></script>
   <title>Whiteskyventures Admin</title>
 </head>
@@ -32,7 +29,7 @@
     <nav class="fixed top-0 z-10 font-lighter text-slate-500 flex justify-between items-center capitalize ps-10 pe-10 bg-white h-[10vh] w-[100%]">
       <!-- logo -->
       <div class="logo">
-        <a href="admin-users.php"><img src="src/image/logo.jpg" class="w-[40px] h-[40px]"></a>
+        <a href="admin-users.php"><img src="src/images/logo.PNG" alt="Website logo" class="w-[40px] h-[40px]"></a>
       </div>
       <!-- navigation links -->
       <div class="navigation fixed left-0 top-[-100vh] bg-[#000] w-[80%] h-[100dvh] p-5 lg:relative lg:w-[70%] lg:h-[0] lg:top-[-10px] lg:bg-inherit">
@@ -75,12 +72,12 @@
           <!-- logout button -->
           <div class="text-red-500 mt-[4rem] font-bold lg:mt-0">
             <?php
-              if(isset($_SESSION['admin_user'])){
-                echo ' <form action="admin-logout.inc.php" method="POST">
+              if (isset($_SESSION['admin_user'])) {
+                  echo ' <form action="admin-logout.inc.php" method="POST">
                 <button type="submit" name="submit" id="logout"><span><i class="fa fa-right-from-bracket fa-sm"></i></span>Logout</button>
                 </form>';
               }
-            ?>
+?>
           </div>
         </ul>
       </div>
@@ -106,30 +103,59 @@
           </tr>
         </thead>
         <!-- fetch users details from our table -->
-        <?php 
-          $sql = "SELECT * FROM loan";
-          $query = $conn->query($sql);
-          while ($row = $query->fetch_assoc()) {
-            $id = $row['id'];
-            $typeOfLoan = $row['type_of_loan'];
-            $duration = $row['duration'];
-            $amount = $row['amount'];
-            $purpose = $row['purpose'];
-            $date = $row['date_time'];
-            $loan_id = $row['loan_id'];
+        <?php
+          $records_per_page = 10;
+$page = isset($_GET['page']) ? $_GET['page'] : 1; // get the  current page number
+
+$start_from = ($page - 1) * $records_per_page;
+$sql = "SELECT * FROM loan LIMIT $start_from, $records_per_page";
+$result = $conn->query($sql);
+
+// If number rows is > 0; use while loop to iterate
+if ($result->num_rows > 0) {
+
+    // Loop through
+    while ($row = $query->fetch_assoc()) {
+
         ?>
-        <tbody>
-          <tr>
-            <td class="border border-slate-500"><?= htmlentities($id); ?></td>
-            <td class="border border-slate-500"><?= htmlentities($typeOfLoan); ?></td>
-            <td class="border border-slate-500"><?= htmlentities($duration); ?></td>
-            <td class="border border-slate-500"><?= htmlentities($amount); ?></td>
-            <td class="border border-slate-500"><?= htmlentities($purpose); ?></td>
-            <td class="border border-slate-500"><?= htmlentities($date); ?></td>
-            <td class="border border-slate-500"><?= htmlentities($loan_id); ?></td>
-          </tr>
-        </tbody>
-        <?php } ?>
+                <tbody>
+                  <tr>
+                    <td class="border border-slate-500"><?= htmlentities($row['id']); ?></td>
+                    <td class="border border-slate-500"><?= htmlentities($row['type_of_loan']); ?></td>
+                    <td class="border border-slate-500"><?= htmlentities($row['duration']); ?></td>
+                    <td class="border border-slate-500"><?= htmlentities($row['amount']); ?></td>
+                    <td class="border border-slate-500"><?= htmlentities($row['purpose']); ?></td>
+                    <td class="border border-slate-500"><?= htmlentities($row['date_time']); ?></td>
+                    <td class="border border-slate-500"><?= htmlentities($row['loan_id']); ?></td>
+                  </tr>
+                </tbody>
+            <?php
+    }
+
+    // pagination links
+    $sql = "SELECT COUNT(id) AS total FROM loan";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $total_records = $row['total'];
+    $total_pages = ceil($total_records / $records_per_page);
+
+    echo '<td>';
+    if ($page > 1) {
+        echo "<a href='?page=".($page - 1)."'>Prev</a> ";
+        // echo "<td><a href='?page=$i'>$i</a></td>";
+    }
+    if ($page < $total_pages) {
+        echo "<a href='?page=".($page + 1)."'>Next</a>";
+    }
+    echo "</td>";
+} else {
+    echo '<tfoot>';
+    echo '<tr>';
+    echo '<td>No records found</td>';
+    echo '</tr>';
+    echo '<tfoot>';
+}
+?>
       </table>
     </div>        
   </main>

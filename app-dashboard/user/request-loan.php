@@ -1,21 +1,21 @@
 <?php
-  require_once('session.inc.php');
-  $loggedInId = $_SESSION['u_id'];
-  if (!isset($loggedInId)) {
+require_once('session.inc.php');
+$loggedInId = $_SESSION['u_id'];
+if (!isset($loggedInId)) {
     $_SESSION["successMessage"] = "Login to contine";
     header("Location: login.php");
     exit();
-  } 
-  // check if kyc status is approved
-  $sql = "SELECT * FROM kyc_data WHERE kyc_status = 'APPROVED' AND kyc_id = '$loggedInId'";
-  $stmt = $conn->query($sql);
-  $result = $stmt->fetch_assoc();
-  if (!$result) {
+}
+// check if kyc status is approved
+$sql = "SELECT * FROM kyc_data WHERE kyc_status = 'APPROVED' AND kyc_id = '$loggedInId'";
+$stmt = $conn->query($sql);
+$result = $stmt->fetch_assoc();
+if (!$result) {
     header('Location: kyc-verification.php');
     exist();
-  } 
+}
 
-  // Here you will have to send an email to user to let them know that their kyc has been approved;
+// Here you will have to send an email to user to let them know that their kyc has been approved;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,20 +29,15 @@
   <link rel="stylesheet" href="../../css/dashboard.css"> 
   <link rel="stylesheet" href="../../css/loan.css"> 
   <!-- bootstrap plugins -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- fontawesome -->
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="../../fontawesome-6.4.0-web/css/regular.css">
+  <script src="https://kit.fontawesome.com/c91674d225.js" crossorigin="anonymous"></script>
   <!-- site logo -->
-  <link rel="icon" type="image/x-icon" href="../../image/logo.png">
+  <link rel="icon" type="image/x-icon" href="../../images/logo.PNG">
   <title>Whiteskyventures | Kyc-verification</title>
 </head>
-<body style="background-image: url('../../image/deposit_bg.PNG'); background-size: 100% 100%;">
+<body style="background-image: url('../../images/deposit_bg.PNG'); background-size: 100% 100%;">
   <!-- body first section -->
   <section>
     <div class="contents">
@@ -77,8 +72,8 @@
             <div class="pt-2">
               <?php
                 echo errorMessage();
-                echo successMessage();
-              ?>
+echo successMessage();
+?>
             </div>
             <div>
               <label for="typeOfLoan">Type of loan<span class="text-warning">*</span></label><br>
@@ -124,5 +119,6 @@
   </section>
   <script src="processBtn.js" type="text/javascript"></script>
   <script src="../../page.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

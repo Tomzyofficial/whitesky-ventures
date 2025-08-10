@@ -1,5 +1,5 @@
 <?php
-  require_once('session.inc.php');
+require_once('session.inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -11,11 +11,6 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="dist/output.css">
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/fontawesome.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/brands.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/solid.css">
-  <link rel="stylesheet" href="fontawesome-6.4.0-web/css/regular.css">
   <!-- site logo -->
   <link rel="icon" type="image/x-icon" href="src/image/logo.jpg">
   <script src="jquery-3.6.0.js"></script>
@@ -44,8 +39,8 @@
         <div class="mx-5 my-4">
           <?php
             echo errorMessage();
-            echo successMessage();
-          ?>
+echo successMessage();
+?>
         </div>
         <div class="mx-5 space-y-4 grid grid-cols-1 md:space-y-0">
           <!-- username input field -->
